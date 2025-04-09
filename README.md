@@ -5,3 +5,10 @@
 ```
 {"image":"mcr.microsoft.com/devcontainers/universal:2"}
 ```
+
+Run the command npm install -g @google/clasp in your terminal to install clasp globally
+
+
+clasp show-authorized-user                                     Show information about the current authorizations state.
+
+clasp create --type sheets --title "plto"

@@ -51,3 +51,46 @@ function useSecret() {
 - `DocumentProperties` (시트/도큐먼트에 바인딩된 경우)
 
 ---
+
+
+응! 지금 너가 쓴 방식처럼 `setProperties()`를 사용하면 **한 번에 여러 개의 프로퍼티(키-값 쌍)**을 저장할 수 있어. 완전 OK야 🙆
+
+---
+
+## ✅ 예시: 여러 개 프로퍼티 저장
+
+```js
+function saveSecrets() {
+  PropertiesService.getDocumentProperties().setProperties({
+    'apiKey': 'eee',
+    'clientId': 'eeeee',
+    'env': 'production'
+  });
+}
+```
+
+이렇게 하면 한 번에 `"apiKey"`, `"clientId"`, `"env"`가 저장돼.  
+그 이후에는 이렇게 불러올 수 있어:
+
+```js
+function useSecrets() {
+  const props = PropertiesService.getDocumentProperties().getProperties();
+  Logger.log(props.apiKey);      
+  Logger.log(props.clientId);  
+}
+```
+
+---
+
+## ℹ️ 보너스 정리
+
+| 메서드 | 설명 |
+|--------|------|
+| `setProperty(key, value)` | 키-값 한 쌍 저장 |
+| `setProperties(obj)` | 여러 개 한꺼번에 저장 |
+| `getProperty(key)` | 키 하나 불러오기 |
+| `getProperties()` | 모든 키-값 객체로 반환 |
+| `deleteProperty(key)` | 특정 키 삭제 |
+| `deleteAllProperties()` | 전부 삭제 |
+
+---
